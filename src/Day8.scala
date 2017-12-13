@@ -19,15 +19,14 @@ object Day8 extends App {
 
     var condition = instruction._2.split(" ")
     if (checkCondition(condition(0), condition(1), condition(2).toInt)) {
-      val inst = instruction._1.split(" ")
-      val reg = inst(0)
-      val incdec = inst(1)
-      val value = inst(2).toInt
+
+      val Array(reg, incdec, value) = instruction._1.split(" ")
+
       val currentRegValue = registers.get(reg).getOrElse(0)
       val newRegValue = if (incdec == "inc") {
-        currentRegValue + value
+        currentRegValue + value.toInt
       } else {
-        currentRegValue - value
+        currentRegValue - value.toInt
       }
 
       // keep record value, for part 2
